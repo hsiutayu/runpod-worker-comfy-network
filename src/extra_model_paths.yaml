@@ -9,3 +9,5 @@ comfyui:
      loras: models/loras/
      upscale_models: models/upscale_models/
      vae: models/vae/
+     ipadapter: models/ipadapter/
+     insightface: models/insightface/models/buffalo_l

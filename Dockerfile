@@ -34,10 +34,16 @@ RUN pip3 install runpod requests
 
 ARG SKIP_DEFAULT_MODELS
 # Download checkpoints/vae/LoRA to include in image.
-RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/checkpoints/sd_xl_base_1.0.safetensors https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors; fi
-RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/vae/sdxl_vae.safetensors https://huggingface.co/stabilityai/sdxl-vae/resolve/main/sdxl_vae.safetensors; fi
-RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/vae/sdxl-vae-fp16-fix.safetensors https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl_vae.safetensors; fi
-RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/loras/xl_more_art-full_v1.safetensors https://civitai.com/api/download/models/152309; fi
+RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/checkpoints/realisticVisionV51_v51VAE.safetensors https://huggingface.co/lllyasviel/fav_models/resolve/main/fav/realisticVisionV51_v51VAE.safetensors?download=true; fi
+RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/vae/vae-ft-mse-840000-ema-pruned.safetensors https://huggingface.co/stabilityai/sd-vae-ft-mse-original/resolve/main/vae-ft-mse-840000-ema-pruned.safetensors?download=true; fi
+RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/ipadapter/ip-adapter-faceid-plusv2_sd15.bin https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sd15.bin; fi
+RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/loras/ip-adapter-faceid-plusv2_sd15_lora.safetensors https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sd15_lora.safetensors; fi
+RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/clip/model2.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/image_encoder/model.safetensors; fi
+RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/insightface/models/buffalo_l/1k3d68.onnx https://runpod-comfyui.s3.us-west-2.amazonaws.com/buffalo_l/1k3d68.onnx; fi
+RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/insightface/models/buffalo_l/2d106det.onnx https://runpod-comfyui.s3.us-west-2.amazonaws.com/buffalo_l/2d106det.onnx; fi
+RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/insightface/models/buffalo_l/det_10g.onnx https://runpod-comfyui.s3.us-west-2.amazonaws.com/buffalo_l/det_10g.onnx; fi
+RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/insightface/models/buffalo_l/genderage.onnx https://runpod-comfyui.s3.us-west-2.amazonaws.com/buffalo_l/genderage.onnx; fi
+RUN if [ -z "$SKIP_DEFAULT_MODELS" ]; then wget -O models/insightface/models/buffalo_l/w600k_r50.onnx https://runpod-comfyui.s3.us-west-2.amazonaws.com/buffalo_l/w600k_r50.onnx; fi
 
 ADD src/extra_model_paths.yaml ./
 
